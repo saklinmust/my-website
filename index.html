@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f2ef;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }.box {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 400px;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: #0a66c2;
+  margin-bottom: 15px;
+}
+
+.error {
+  font-size: 22px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.code {
+  font-size: 50px;
+  color: #d93025;
+  font-weight: bold;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #0a66c2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #004182;
+}
+
+.prank {
+  display: none;
+  animation: shake 0.3s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(0); }
+  25% { transform: translate(2px, -2px); }
+  50% { transform: translate(-2px, 2px); }
+  75% { transform: translate(2px, 2px); }
+  100% { transform: translate(0); }
+}
+
+audio { display: none; }
+
+
+.flicker {
+  animation: flickerEffect 0.15s 10;
+}
+
+@keyframes flickerEffect {
+  0% { opacity: 1; }
+  20% { opacity: 0.2; }
+  40% { opacity: 1; }
+  60% { opacity: 0.3; }
+  80% { opacity: 1; }
+  100% { opacity: 0.1; }
+}
+
+  </style>
+</head>
+<body>  <div class="box" id="errorBox">
+    <div class="logo">LinkedIn</div>
+    <div class="code">500</div>
+    <div class="error">Server Error 😢</div>
+    <p>Please try again later.</p>
+    <button class="btn" onclick="showPrank()">Retry</button>
+  </div>  <div class="box prank" id="prankBox">
+    <h1>😂 GOTCHA!</h1>
+    <p>Server down nahi hai... tum prank ho gaye 😎</p>
+    <button class="btn" onclick="reloadPage()">Reload</button>
+  </div><audio id="sound" src="https://www.myinstants.com/media/sounds/trollolol.mp3"></audio>
+
+  <script>
+    // Auto redirect after 5 seconds
+    setTimeout(() => {
+      // Start flicker before prank
+      document.body.classList.add('flicker');
+
+      setTimeout(() => {
+        showPrank();
+        document.body.classList.remove('flicker');
+      }, 1500);
+
+    }, 3000);
+
+    function showPrank() {
+      document.getElementById('errorBox').style.display = 'none';
+      document.getElementById('prankBox').style.display = 'block';
+      document.getElementById('sound').play();
+    }
+
+    function reloadPage() {
+      location.reload();
+    }
+  </script></body>
+</html>
